@@ -4,7 +4,12 @@ const { chromium } = require('playwright');
     // Launch browser
     const browser = await chromium.launch({
         headless: true,
-        slowMo: 500
+        slowMo: 500,
+        args: [
+            '--disable-web-security',
+            '--disable-features=IsolateOrigins,site-per-process',
+            '--no-sandbox'
+          ]
     });
     const context = await browser.newContext();
     const page = await context.newPage();
