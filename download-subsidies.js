@@ -4,15 +4,13 @@ const { chromium } = require('playwright');
     // Launch browser
     const browser = await chromium.launch({
         headless: true,
-        slowMo: 500,
-        args: [
-            '--disable-web-security',
-            '--disable-features=IsolateOrigins,site-per-process',
-            '--no-sandbox'
-          ]
+        slowMo: 500
     });
     const context = await browser.newContext();
     const page = await context.newPage();
+    await page.setExtraHTTPHeaders({
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
+      });
 
     try {
         // Step 1: Open the website
