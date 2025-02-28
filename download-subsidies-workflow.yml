@@ -11,11 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out this repo
-      uses: actions/checkout@v3
-    - name: Fetch latest data
-      run: |-
-        curl 'https://www.fire.ca.gov/api/sitecore/Incident/GetFiresForMap' \
-          -X POST --data-raw 'showFeatured=False' | jq > incidents-june-2023-format.json
+      uses: actions/checkout@v4
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    - name: Install dependencies
+      run: |
+        npm ci
+        npx playwright install --with-deps chromium
+    - name: Run Playwright script to download subsidies from Subsidieregister
+      run: node download-subsidies.js
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
