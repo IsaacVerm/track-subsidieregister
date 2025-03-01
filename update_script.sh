@@ -5,7 +5,7 @@
 git pull origin main
 
 # Download subsidies CSV
-node download-subsidies.js
+/home/indexinator/.nvm/versions/node/v20.18.3/bin/node download-subsidies.js
 
 # Add all changes to git
 git add -A
