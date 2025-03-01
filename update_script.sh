@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Download subsidies CSV
-node download-subsidies.js
-
 # pull latest changes from github
 # maybe another update happened somewhere else (manual correction, etc.)
 git pull origin main
+
+# Download subsidies CSV
+node download-subsidies.js
 
 # Add all changes to git
 git add -A
