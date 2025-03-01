@@ -50,7 +50,7 @@ const { chromium } = require('playwright');
         await page.click('#btn_exporteer_csv');
         console.log('CSV export button clicked, download should start');
         const download = await downloadPromise;
-        await download.saveAs('~/Documents/index/projects/track-subsidieregister/subsidies-damme.csv');
+        await download.saveAs('./subsidies-damme.csv');
 
         // Wait a bit for the download to complete
         await page.waitForTimeout(5000);
