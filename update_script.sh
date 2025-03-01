@@ -7,7 +7,7 @@ node download-subsidies.js
 git add -A
 
 # Create timestamp in UTC
-timestamp=$(date -u)
+timestamp=$(LC_TIME=en_US.UTF-8 date -u)
 
 # Commit changes with timestamp
 git commit -m "Latest data: ${timestamp}" || exit 0
