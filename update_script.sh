@@ -3,6 +3,10 @@
 # Download subsidies CSV
 node download-subsidies.js
 
+# pull latest changes from github
+# maybe another update happened somewhere else (manual correction, etc.)
+git pull origin main
+
 # Add all changes to git
 git add -A
 
