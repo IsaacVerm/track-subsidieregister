@@ -44,9 +44,13 @@ const { chromium } = require('playwright');
         await page.click('#btn_zoek');
         console.log('Search button clicked after entering Damme');
 
-        // Step 6: Click the CSV export button
+        // Step 6: Click the CSV export button to download
+        // https://playwright.dev/docs/downloads
+        const downloadPromise = page.waitForEvent('download');
         await page.click('#btn_exporteer_csv');
         console.log('CSV export button clicked, download should start');
+        const download = await downloadPromise;
+        await download.saveAs('~/Documents/index/projects/track-subsidieregister/subsidies-damme.csv');
 
         // Wait a bit for the download to complete
         await page.waitForTimeout(5000);
